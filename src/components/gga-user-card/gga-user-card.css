@@ -1,0 +1,192 @@
+:host {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 5px;
+}
+
+/*
+! gga-user-card__loader
+*/
+
+.gga-user-card__loader {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+
+.gga-user-card__loader-stroke {
+  top: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  position: absolute;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  animation: loading 1.5s linear infinite;
+  -webkit-animation: loading 1.5s linear infinite;
+}
+
+.gga-user-card__loader-stroke::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 200%;
+  border: 2px solid #0062ff;
+  border-radius: 100%;
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.user-common {
+  width: 100%;
+  height: 110px;
+  background: blue;
+}
+
+.user-common__info-container {
+  background: #bdbdbd;
+  border-radius: 15px 15px 0 0;
+  height: 90px;
+}
+
+.user-common__profile-picture {
+  top: 35px;
+  margin: auto calc(50% - 38px);
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  border: 2px solid white;
+}
+
+.user-common__profile-name {
+  display: block;
+}
+
+.user-common__profile-login {
+  display: block;
+}
+
+.user-additional-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-additional-container__item {
+  background: blue;
+  padding: 5px 10px;
+  margin: auto 10px;
+  color: #ffffff;
+  border-radius: 50px;
+}
+
+.user-additional-container__item:first-child {
+  margin: 0 10px 0 0;
+}
+.user-additional-container__item:last-child {
+  margin: 0 0 0 10px;
+}
+
+.user-bio-container {
+  padding: 10px;
+  color: #bdbdbd;
+  width: 100%;
+  height: auto;
+}
+
+.user-stats {
+  width: 100%;
+  height: auto;
+}
+
+.user-stats__stats-container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.user-stats__stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 74px;
+  width: 74px;
+  text-align: center;
+  user-select: none;
+}
+
+.user-stats__stat:hover {
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.user-stats__value {
+  line-height: 24px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.user-stats__label {
+  font-size: 15px;
+  font-weight: lighter;
+}
+
+
+.visit-gh-profile {
+  width: 100%;
+  background: red;
+  height: 64px;
+}
+
+.visit-gh-profile__button {
+  padding: 5px 10px;
+  margin: 25px;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: white;
+  background-color: #0062ff;
+  border-radius: 50px;
+}
