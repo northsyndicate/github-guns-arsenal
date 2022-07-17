@@ -49,10 +49,10 @@ export class GgaUserCard {
     });
   }
 
-  loader() {
+  getLoaderMarkup() {
     return (
-      <div class="gga-user-card__loader">
-        <div class="gga-user-card__loader-stroke"></div>
+      <div class="loader">
+        <div class="loader__loader-stroke"></div>
       </div>
     );
   }
@@ -66,55 +66,33 @@ export class GgaUserCard {
     );
   }
 
-  userBioContainer() {
-    return (
-      <div class="user-bio-container">
-        <p>{this.userData.bio}</p>
-      </div>
-    );
-  }
-
-  userCommonInfo() {
-    return (
-      <div class="user-common">
-        <img class="user-common__profile-picture" src={this.userData.avatar_url} alt="" />
-        <div class="user-common__info-container">
-          <span class="user-common__profile-name">{this.userData.name}</span>
-          <span class="user-common__profile-login">{this.userData.login} </span>
-        </div>
-      </div>
-    );
-  }
-
-  visitGhProfileFragment() {
-    return (
-      <div class="visit-gh-profile">
-        <a href={this.userData.html_url} class="visit-gh-profile__button">
-          Visit
-        </a>
-      </div>
-    );
-  }
-
-  userAdditionalInfo() {
-    return (
-      <div class="user-additional-container">
-        <div class="user-additional-container__item">{this.userData.twitter_username}</div>
-        <div class="user-additional-container__item">{this.userData.location}</div>
-        <div class="user-additional-container__item">{this.userData.hireable || 'no'}</div>
-      </div>
-    );
-  }
-
-  userStatsContainer() {
+  userStatsFragment() {
     return (
       <div class="user-stats">
-        <div class="user-stats__stats-container">
-          {this.includeFollowers && this.createStat('Followers', this.userData.followers)}
-          {this.includeFollowing && this.createStat('Following', this.userData.following)}
-          {this.includeGists && this.createStat('Gists', this.userData.public_gists)}
-          {this.includeRepos && this.createStat('Repos', this.userData.public_repos)}
-        </div>
+        {this.includeFollowers && this.createStat('Followers', this.userData.followers)}
+        {this.includeFollowing && this.createStat('Following', this.userData.following)}
+        {this.includeGists && this.createStat('Gists', this.userData.public_gists)}
+        {this.includeRepos && this.createStat('Repos', this.userData.public_repos)}
+      </div>
+    );
+  }
+
+  userBioFragment() {
+    if (!this.userData.bio) return null;
+
+    return (
+      <div class="user-bio">
+        <p class="user-bio__paragraph">{this.userData.bio}</p>
+      </div>
+    );
+  }
+
+  userCommonInfoFragment() {
+    return (
+      <div class="user-common-info" style={{ backgroundImage: `url(${this.userData.avatar_url})` }}>
+        <img class="user-common-info__profile-image" src={this.userData.avatar_url} alt="" />
+        <span class="user-common-info__name">{this.userData.name}</span>
+        <span class="user-common-info__login">{`@${this.userData.login}`}</span>
       </div>
     );
   }
@@ -123,12 +101,10 @@ export class GgaUserCard {
     return (
       <Host>
         <slot>
-          {this.dataLoadState === DATA_LOAD_STATE.LOADING ? this.loader() : null}
-          {this.userData !== null && this.userCommonInfo()}
-          {this.userData !== null && this.userAdditionalInfo()}
-          {this.userData !== null ? this.userBioContainer() : null}
-          {this.userData !== null && this.showStats ? this.userStatsContainer() : null}
-          {this.userData && this.visitGhProfileFragment()}
+          {this.dataLoadState === DATA_LOAD_STATE.LOADING ? this.getLoaderMarkup() : null}
+          {this.userData && this.userCommonInfoFragment()}
+          {this.userData && this.userBioFragment()}
+          {this.userData !== null && this.userStatsFragment()}
         </slot>
       </Host>
     );

@@ -2,20 +2,21 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 10px;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  width: 350px;
+  width: 450px;
   height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  border-radius: 5px;
+  justify-content: space-between;
+  border-radius: 5px 5px 0 0;
+  color: #333333;
 }
 
-/*
-! gga-user-card__loader
-*/
+/* -------------------------------------------------------------------------- */
+/*                                   loader                                   */
+/* -------------------------------------------------------------------------- */
 
-.gga-user-card__loader {
+.loader {
   display: flex;
   position: relative;
   align-items: center;
@@ -25,7 +26,7 @@
   height: 100px;
 }
 
-.gga-user-card__loader-stroke {
+.loader__loader-stroke {
   top: 0;
   width: 100%;
   height: 50%;
@@ -37,7 +38,7 @@
   -webkit-animation: loading 1.5s linear infinite;
 }
 
-.gga-user-card__loader-stroke::before {
+.loader__loader-stroke::before {
   content: '';
   display: block;
   position: absolute;
@@ -69,81 +70,63 @@
   }
 }
 
-.user-common {
+/* -------------------------------------------------------------------------- */
+/*                              user-common-info                              */
+/* -------------------------------------------------------------------------- */
+.user-common-info {
   width: 100%;
-  height: 110px;
-  background: blue;
+  height: 200px;
+  border-radius: 5px 5px 0 0;
 }
 
-.user-common__info-container {
-  background: #bdbdbd;
-  border-radius: 15px 15px 0 0;
-  height: 90px;
+.user-common-info:after {
+  background-color: rgba(0, 0, 0, 0.874);
 }
 
-.user-common__profile-picture {
-  top: 35px;
-  margin: auto calc(50% - 38px);
-  width: 80px;
-  height: 80px;
+.user-common-info__profile-image {
+  height: 84px;
+  width: 84px;
+  position: relative;
+  top: calc(50% - 42px);
+  left: calc(50% - 42px);
   border-radius: 100%;
-  border: 2px solid white;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
 }
 
-.user-common__profile-name {
+.user-common-info__name {
   display: block;
-}
-
-.user-common__profile-login {
-  display: block;
-}
-
-.user-additional-container {
-  width: 100%;
-  height: auto;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-}
-
-.user-additional-container__item {
-  background: blue;
-  padding: 5px 10px;
-  margin: auto 10px;
+  font-size: 1.4rem;
   color: #ffffff;
-  border-radius: 50px;
+  text-transform: uppercase;
 }
 
-.user-additional-container__item:first-child {
-  margin: 0 10px 0 0;
-}
-.user-additional-container__item:last-child {
-  margin: 0 0 0 10px;
+.user-common-info__login {
+  display: block;
 }
 
-.user-bio-container {
-  padding: 10px;
-  color: #bdbdbd;
+/* -------------------------------------------------------------------------- */
+/*                                  user-bio                                  */
+/* -------------------------------------------------------------------------- */
+.user-bio {
   width: 100%;
   height: auto;
 }
+
+p.user-bio__paragraph {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 user-stats                                 */
+/* -------------------------------------------------------------------------- */
 
 .user-stats {
   width: 100%;
   height: auto;
-}
-
-.user-stats__stats-container {
-  width: 100%;
-  height: auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
 }
 
 .user-stats__stat {
@@ -171,22 +154,4 @@
 .user-stats__label {
   font-size: 15px;
   font-weight: lighter;
-}
-
-
-.visit-gh-profile {
-  width: 100%;
-  background: red;
-  height: 64px;
-}
-
-.visit-gh-profile__button {
-  padding: 5px 10px;
-  margin: 25px;
-  font-size: 1.3rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: white;
-  background-color: #0062ff;
-  border-radius: 50px;
 }
